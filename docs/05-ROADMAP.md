@@ -2,6 +2,8 @@
 
 **Status:** Draft 0.1 — existing GitHub issues need audit, not wholesale replacement.
 
+This is the canonical product roadmap and work policy. The [historical roadmap proposal](../ROADMAP.md) preserves earlier prototype planning and issue context.
+
 ## Goal state
 
 An accessible multiplayer Roblox tycoon in which players discover/collect hardware, build PCs, develop and publish AI products, understand meaningful strategic consequences, reinvest, customize and eventually move from solo manual work toward staffing, infrastructure and diversified business.
@@ -27,7 +29,7 @@ An accessible multiplayer Roblox tycoon in which players discover/collect hardwa
 - [ ] Refine `03-GAME-SYSTEMS.md` and resolve contradictions.
 - [ ] Work through P0 questions in `04-DESIGN-QUESTIONS.md`, one at a time.
 - [ ] Reconcile GitHub issues and current code with approved decisions.
-- [ ] Update existing `AGENTS.md` to require reading canonical docs.
+- [x] Update existing `AGENTS.md` to require reading canonical docs.
 
 ## Current prototype (reported)
 
