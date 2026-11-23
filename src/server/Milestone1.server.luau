@@ -101,6 +101,17 @@ travel.OnServerEvent:Connect(function(player, destination, requestId)
 end)
 travel.Parent = ReplicatedStorage
 
+local terminal = Instance.new("RemoteEvent")
+terminal.Name = "AILabTerminal"
+terminal.Parent = ReplicatedStorage
+
+local function sendTerminalState(player, open)
+    local missing = Hardware.missingParts(player)
+    if missing then
+        terminal:FireClient(player, open, missing)
+    end
+end
+
 local function addPlayer(player)
     if garages[player] then
         return
@@ -114,7 +125,10 @@ local function addPlayer(player)
     local garage, spawn, landing = World.garage(map, player, slot, function(owner)
         local powered, message = Hardware.install(owner)
         owner:SetAttribute("HardwareMessage", message)
+        sendTerminalState(owner, false)
         return powered
+    end, function(owner)
+        sendTerminalState(owner, true)
     end)
     local assignment = { model = garage, slot = slot, landing = landing, nextTravel = 0 }
     garages[player] = assignment
