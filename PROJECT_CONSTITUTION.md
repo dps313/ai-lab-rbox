@@ -172,8 +172,8 @@ Documentation should remain concise and useful.
 
 Maintain:
 - `README.md` — Setup and development instructions
-- `GAME_DESIGN.md` — Approved gameplay design
-- `ROADMAP.md` — Current milestones and future scope
+- `docs/03-GAME-SYSTEMS.md` and `docs/06-DECISIONS.md` — Gameplay design and decision status
+- `docs/05-ROADMAP.md` — Canonical product roadmap and work policy
 - `PROJECT_CONSTITUTION.md` — Permanent engineering principles
 - `AGENTS.md` — Codex operating instructions
 

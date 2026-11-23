@@ -2,7 +2,16 @@
 
 Read `PROJECT_CONSTITUTION.md` before making changes.
 
-Read the relevant sections of `GAME_DESIGN.md` and `ROADMAP.md` when implementing gameplay features.
+## Product documentation
+
+The repository is the canonical product record. Before proposing or implementing gameplay, read the relevant sections of the product baseline:
+
+- [Vision](docs/01-VISION.md) and [player journey](docs/02-PLAYER-JOURNEY.md) for the intended experience.
+- [Game systems](docs/03-GAME-SYSTEMS.md) and [decision log](docs/06-DECISIONS.md) for agreed directions, preferences, and deferred ideas.
+- [Design questions](docs/04-DESIGN-QUESTIONS.md) for unresolved decisions and [current state](docs/07-CURRENT-STATE.md) for reported prototype behavior.
+- [Canonical roadmap and work policy](docs/05-ROADMAP.md) for current priorities and implementation approval.
+
+Record product decisions in the decision log. Product exploration, prototype behavior, and existing issues do not authorize coding. Assign or delegate only explicitly approved, implementation-ready work with clear acceptance criteria. Keep significant code changes isolated and reviewable, and report the checks actually run.
 
 ## Engineering rules
 
@@ -25,6 +34,15 @@ Implement only the requested milestone.
 If requirements are ambiguous, make a reasonable minimal assumption, document it, and continue unless the decision is fundamental to the product.
 
 For substantial architectural changes, explain the proposed approach before implementing.
+
+## Session isolation
+
+- Give each issue session its own Git worktree and branch, including QA sessions. Use an issue-based branch name such as `issue-2-travel-qa`.
+- Keep the primary checkout on `main` for coordination and integration. Start issue branches from the current baseline and verify the worktree path and branch before editing.
+- Reuse the assigned worktree when resuming. Only one live session may write to a worktree. Worktrees share Git history and refs, so leave other sessions' branches and worktrees alone.
+- Run Rojo and Studio checks against the assigned worktree. Use a separate Rojo port and Studio place per simultaneous playtest, or coordinate use of the same Studio instance. Write generated builds inside the assigned worktree.
+- Keep changes and verification scoped to the assigned issue. Link the issue in the pull request when code changes are needed. For QA-only work, record the results on the issue.
+- After the issue is done, remove the worktree only after preserving any needed changes and confirming it is clean and no session is using it.
 
 ## Verification
 
