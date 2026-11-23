@@ -1,0 +1,13 @@
+{
+  "name": "AI Lab Tycoon Unit Tests",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "AILabShared": { "$path": "src/shared" }
+    },
+    "ServerScriptService": {
+      "Hardware": { "$path": "src/server/Hardware.luau" },
+      "HardwareTest": { "$path": "tests/Hardware.server.luau" }
+    }
+  }
+}
