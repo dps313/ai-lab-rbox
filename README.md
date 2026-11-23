@@ -29,3 +29,7 @@ Alternatively, run `rojo build -o Milestone1.1.rbxlx` and open that file in Stud
 Use one short-lived branch per issue and link the issue in the pull request. Run the Rojo build before merging. Record any Studio checks the change needs, including a two-client check for shared state and a phone-emulator check for UI changes.
 
 Review `git status --short` before committing. Commit Luau source, the Rojo project file, and project docs. Local tools and generated `.rbxl` and `.rbxlx` files are ignored.
+
+## Run unit tests
+
+Run `rojo build test.project.json -o unit-tests.rbxlx`, open the generated place in Studio, and press **Play**. Studio Output reports whether the hardware unit tests passed. The test project runs separately from the game.

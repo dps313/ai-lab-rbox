@@ -55,22 +55,34 @@ function Hardware.purchase(player, id)
     return true, "Bought " .. item.Name .. "."
 end
 
+function Hardware.missingParts(player)
+    local state = states[player]
+    if not state then
+        return nil
+    end
+    local missing = {}
+    for _, category in Catalog.Categories do
+        if not state.installed[category] then
+            table.insert(missing, category)
+        end
+    end
+    return missing
+end
+
 function Hardware.install(player)
     local state = states[player]
     if not state then
         return false, "Garage unavailable."
     end
-    local missing = {}
     for _, category in Catalog.Categories do
         if state.owned[category] then
             if not state.installed[category] then
                 state.installed[category] = state.owned[category]
                 player:SetAttribute("Installed" .. category, true)
             end
-        else
-            table.insert(missing, category)
         end
     end
+    local missing = Hardware.missingParts(player)
     if #missing > 0 then
         return false, "Still needed: " .. table.concat(missing, ", ")
     end

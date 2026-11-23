@@ -129,7 +129,7 @@ function World.store(parent, items, buy)
     return products, arrivals
 end
 
-function World.garage(parent, player, slot, install)
+function World.garage(parent, player, slot, install, openTerminal)
     local garage = Instance.new("Model")
     garage.Name = "Garage_" .. player.UserId
     garage.ModelStreamingMode = Enum.ModelStreamingMode.PersistentPerPlayer
@@ -176,6 +176,14 @@ function World.garage(parent, player, slot, install)
             interaction.Enabled = false
         end
     end)
+    local terminal = prompt(screen, "Garage PC", "Open terminal", function(visitor)
+        if visitor == player then
+            openTerminal(player)
+        end
+    end)
+    terminal.KeyboardKeyCode = Enum.KeyCode.F
+    terminal.GamepadKeyCode = Enum.KeyCode.ButtonY
+    terminal.UIOffset = Vector2.new(0, -72)
     garage.Parent = parent
     garage:AddPersistentPlayer(player)
     return garage, spawn, landing
